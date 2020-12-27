@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        php-version: ['7.2', '7.3', '7.4']
-        engine: ['none', 'swoole', 'swow']
+        php-version: ['7.3', '7.4']
+        engine: ['swoole', 'swow']
       max-parallel: 5
     steps:
       - name: Checkout
@@ -55,6 +55,7 @@ jobs:
           sudo make install
           sudo sh -c "echo extension=swow > /etc/php/${{ matrix.php-version }}/cli/conf.d/swow.ini"
           php --ri swow
+          composer require hyperf/engine-swow
       - name: Setup Packages
         run: composer update -o --no-scripts
       - name: Run Test Cases
