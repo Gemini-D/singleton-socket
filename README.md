@@ -15,3 +15,7 @@
 ```
 composer require gemini/singleton-socket
 ```
+
+## 使用
+
+
